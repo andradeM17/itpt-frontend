@@ -52,6 +52,8 @@ function App() {
   return (
     <div className="container">
       <h1>Text Processing Tools</h1>
+      NOTE: The process must be selected before uploading the file(s).
+      If you change the process, please re-upload the file(s) to avoid errors.
 
       <section>
         <h2>1)  Select Process</h2>
@@ -70,6 +72,28 @@ function App() {
           <option value="split">Sentence Splitting</option>
           <option value="align">Sentence Alignment</option>
         </select>
+
+        {mode === "langdetect" && (
+          <p>
+            Detects the language of the uploaded text file. The output will be a
+            text file containing the detected language code.
+          </p>
+        )}
+
+        {mode === "split" && (
+          <p>
+            Splits the uploaded text file into sentences. The output will be a
+            text file with each sentence on a new line.
+          </p>
+        )}
+
+        {mode === "align" && (
+          <p>
+            Aligns sentences from two uploaded text files. The output will be a
+            text file with aligned sentence pairs.
+          </p>
+        )}
+
       </section>
 
       <section>
