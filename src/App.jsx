@@ -8,8 +8,8 @@ function App() {
   const [status, setStatus] = useState("");
   const [downloadUrl, setDownloadUrl] = useState(null);
 
-  const api = (path) => `http://localhost:5000${path}`;
-
+  const api = (path) => `https://itpt-backend.onrender.com${path}`;
+  
   const handleProcess = async () => {
     setStatus("Processing…");
     setDownloadUrl(null);
