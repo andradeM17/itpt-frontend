@@ -63,7 +63,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Text Processing Tools</h1>
+      <h1>Irish Text Processing Tools</h1>
       NOTE: The process must be selected before uploading the file(s).
       If you change the process, please re-upload the file(s) to avoid errors.
 
@@ -87,8 +87,7 @@ function App() {
 
         {mode === "langdetect" && (
           <p>
-            Detects the language of the uploaded text file. The output will be a
-            text file containing the detected language code.
+            Detects the language of the uploaded text file. The language code will be displayed below.
           </p>
         )}
 
