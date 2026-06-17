@@ -58,11 +58,19 @@ function App() {
     }
 
     // Other modes still download files
+    const disposition = response.headers.get("Content-Disposition");
+    let filename = "output.txt";
+
+    if (disposition && disposition.includes("filename=")) {
+      filename = disposition.split("filename=")[1].replace(/"/g, "");
+    }
+
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
 
-    setDownloadUrl(url);
+    setDownloadUrl({ url, filename });
     setStatus("Done");
+
   };
 
 
@@ -158,8 +166,8 @@ function App() {
 
         {downloadUrl && (
           <a
-            href={downloadUrl}
-            download
+            href={downloadUrl.url}
+            download={downloadUrl.filename}
             style={{ display: "block", marginTop: "20px" }}
           >
             ⬇️ Download Processed File
