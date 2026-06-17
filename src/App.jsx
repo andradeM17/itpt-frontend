@@ -7,12 +7,14 @@ function App() {
   const [file2, setFile2] = useState(null);
   const [status, setStatus] = useState("");
   const [downloadUrl, setDownloadUrl] = useState(null);
+  const [langResult, setLangResult] = useState("");
 
   const api = (path) => `https://itpt-backend.onrender.com${path}`;
   
   const handleProcess = async () => {
     setStatus("Processing…");
     setDownloadUrl(null);
+    setLangResult("");
 
     const formData = new FormData();
     formData.append("mode", mode);
@@ -42,12 +44,22 @@ function App() {
       return;
     }
 
+    // SPECIAL CASE: language detection → show text instead of download
+    if (mode === "langdetect") {
+      const text = await response.text();
+      setLangResult(text);
+      setStatus("Done");
+      return;
+    }
+
+    // Other modes still download files
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
 
     setDownloadUrl(url);
     setStatus("Done");
   };
+
 
   return (
     <div className="container">
@@ -118,6 +130,13 @@ function App() {
         <button onClick={handleProcess}>Run</button>
 
         <p>{status}</p>
+
+        {mode === "langdetect" && langResult && (
+          <div style={{ marginTop: "20px", padding: "10px", border: "1px solid #ccc" }}>
+            <strong>Detected Language:</strong>
+            <pre>{langResult}</pre>
+          </div>
+        )}
 
         {downloadUrl && (
           <a
