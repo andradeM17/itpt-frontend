@@ -3,6 +3,7 @@ import "./App.css";
 
 function App() {
   const [mode, setMode] = useState("langdetect"); // default
+  const [alignFormat, setAlignFormat] = useState("csv"); // default
   const [file1, setFile1] = useState(null);
   const [file2, setFile2] = useState(null);
   const [status, setStatus] = useState("");
@@ -18,6 +19,10 @@ function App() {
 
     const formData = new FormData();
     formData.append("mode", mode);
+
+    if (mode === "align") {
+      formData.append("format", alignFormat);
+    }
 
     if (!file1) {
       setStatus("Please upload the required file(s)");
@@ -104,6 +109,20 @@ function App() {
             text file with aligned sentence pairs.
           </p>
         )}
+
+        {mode === "align" && (
+          <div style={{ marginTop: "10px" }}>
+            <label>Output format: </label>
+            <select
+              value={alignFormat}
+              onChange={(e) => setAlignFormat(e.target.value)}
+            >
+              <option value="csv">CSV</option>
+              <option value="tmx">TMX</option>
+            </select>
+          </div>
+        )}
+
 
       </section>
 
