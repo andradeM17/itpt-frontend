@@ -159,7 +159,7 @@ function App() {
         {downloadUrl && (
           <a
             href={downloadUrl}
-            download={`processed_output.txt`}
+            download
             style={{ display: "block", marginTop: "20px" }}
           >
             ⬇️ Download Processed File
