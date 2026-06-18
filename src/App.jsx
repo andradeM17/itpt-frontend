@@ -20,9 +20,10 @@ function App() {
     const formData = new FormData();
     formData.append("mode", mode);
 
-    if (mode === "align") {
-      formData.append("format", alignFormat);
-    }
+    if (mode === "align" || mode === "bilingual_to_aligned") {
+    formData.append("format", alignFormat);
+  }
+
 
     if (!file1) {
       setStatus("Please upload the required file(s)");
@@ -96,6 +97,7 @@ function App() {
           <option value="langdetect">Language Detection</option>
           <option value="split">Sentence Splitting</option>
           <option value="align">Sentence Alignment</option>
+          <option value="bilingual_to_aligned">Bilingual File Alignment</option>
         </select>
 
         {mode === "langdetect" && (
@@ -118,6 +120,12 @@ function App() {
           </p>
         )}
 
+        {mode === "bilingual_to_aligned" && (
+          <p>
+            Takes a single bilingual text file (English and Irish) and aligns the sentences. The output will be a text file with aligned sentence pairs.
+          </p>
+        )}
+
         {mode === "align" && (
           <div style={{ marginTop: "10px" }}>
             <label>Output format: </label>
@@ -130,6 +138,20 @@ function App() {
             </select>
           </div>
         )}
+
+        {mode === "bilingual_to_aligned" && (
+          <div style={{ marginTop: "10px" }}>
+            <label>Output format: </label>
+            <select
+              value={alignFormat}
+              onChange={(e) => setAlignFormat(e.target.value)}
+            >
+              <option value="csv">CSV</option>
+              <option value="tmx">TMX</option>
+            </select>
+          </div>
+        )}
+
 
 
       </section>
