@@ -124,7 +124,7 @@ function App() {
 
         {mode === "bilingual_to_aligned" && (
           <p>
-            Takes a single bilingual text file (English and Irish) and aligns the sentences. The output will be a text file with aligned sentence pairs.
+            Takes a bilingual text files (English and Irish) and aligns the sentences. The output will be a text file with aligned sentence pairs.
           </p>
         )}
 

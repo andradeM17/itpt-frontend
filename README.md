@@ -34,7 +34,7 @@ Upload **two files** (source + target) → download:
 depending on the selected format.
 
 ### **4. Bilingual Mixed‑File Alignment**
-Upload **one file** containing English + Irish mixed together → download:
+Upload **files** (.txt, .docx or .pdf)  containing English + Irish mixed together → download:
 
 - `bilingual_alignment.csv` or `.tmx`  
 - `failed_lines.txt`  
