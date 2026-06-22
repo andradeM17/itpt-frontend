@@ -4,7 +4,7 @@ import "./App.css";
 function App() {
   const [mode, setMode] = useState("langdetect"); // default
   const [alignFormat, setAlignFormat] = useState("csv"); // default
-  const [file1, setFile1] = useState(null);
+  const [file1, setFile1] = useState([]);
   const [file2, setFile2] = useState(null);
   const [status, setStatus] = useState("");
   const [downloadUrl, setDownloadUrl] = useState(null);
@@ -25,12 +25,14 @@ function App() {
   }
 
 
-    if (!file1) {
-      setStatus("Please upload the required file(s)");
+    if (!file1 || file1.length === 0) {
+      setStatus("Please upload at least one file");
       return;
     }
 
-    formData.append("file1", file1);
+    file1.forEach(f => {
+      formData.append("file1", f);
+    });
 
     if (mode === "align") {
       if (!file2) {
@@ -162,8 +164,10 @@ function App() {
         <p>Main file:</p>
         <input
           type="file"
-          onChange={(e) => setFile1(e.target.files[0])}
+          multiple
+          onChange={(e) => setFile1(Array.from(e.target.files))}
         />
+
 
         {mode === "align" && (
           <>
