@@ -184,7 +184,7 @@ function App() {
           </>
         )}
 
-        <p>Or paste text:</p>
+        <p>Or paste text (NOTE: this will not work for the sentence aligner):</p>
         <textarea
           value={textInput}
           onChange={(e) => setTextInput(e.target.value)}
