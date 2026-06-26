@@ -9,6 +9,8 @@ function App() {
   const [status, setStatus] = useState("");
   const [downloadUrl, setDownloadUrl] = useState(null);
   const [langResult, setLangResult] = useState("");
+  const [textInput, setTextInput] = useState("");
+
 
   const api = (path) => `https://itpt-backend.onrender.com${path}`;
   
@@ -19,16 +21,19 @@ function App() {
 
     const formData = new FormData();
     formData.append("mode", mode);
+    formData.append("text_input", textInput);
+
 
     if (mode === "align" || mode === "bilingual_to_aligned") {
     formData.append("format", alignFormat);
   }
 
 
-    if (!file1 || file1.length === 0) {
-      setStatus("Please upload at least one file");
+    if ((file1.length === 0) && textInput.trim() === "") {
+      setStatus("Please upload a file or paste text");
       return;
     }
+
 
     file1.forEach(f => {
       formData.append("file1", f);
@@ -178,6 +183,16 @@ function App() {
             />
           </>
         )}
+
+        <p>Or paste text:</p>
+        <textarea
+          value={textInput}
+          onChange={(e) => setTextInput(e.target.value)}
+          rows={6}
+          style={{ width: "100%", marginBottom: "10px" }}
+          placeholder="Paste text here (optional)"
+        ></textarea>
+
 
         <button onClick={handleProcess}>Run</button>
 
