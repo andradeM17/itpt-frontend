@@ -155,6 +155,13 @@ Make sure the backend is running at the URL defined in `api.js`.
 
 ---
 
+### **Deploy to github-pages**
+
+```
+npm run build
+npm run deploy
+```
+
 ## **Configuration**
 
 ### **Backend URL**
