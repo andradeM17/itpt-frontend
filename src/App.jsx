@@ -14,8 +14,8 @@ function App() {
   const placeholderText = "Paste text here (optional)";
 
 
-  // const api = (path) => `https://itpt-backend.onrender.com${path}`;
-  const api = (path) => `http://localhost:5000${path}`;
+  const api = (path) => `https://itpt-backend.onrender.com${path}`;
+  // const api = (path) => `http://localhost:5000${path}`;
   
   const handleProcess = async () => {
     setStatus("Processing…");
@@ -37,7 +37,7 @@ function App() {
         return;
       }
     }
-    if (mode === "bilingual_to_aligned") {
+    else if (mode === "bilingual_to_aligned") {
       if (!file1) {
         setStatus("Please upload a bilingual file for alignment");
         return;
