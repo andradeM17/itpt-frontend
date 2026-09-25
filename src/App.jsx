@@ -13,6 +13,7 @@ function App() {
 
 
   const api = (path) => `https://itpt-backend.onrender.com${path}`;
+  // const api = (path) => `http://localhost:5000${path}`;
   
   const handleProcess = async () => {
     setStatus("Processing…");

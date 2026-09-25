@@ -1,4 +1,4 @@
-### WRITTEN BY CO-PILOT ###
+### README WRITTEN BY CO-PILOT ###
 
 ---
 
@@ -34,7 +34,7 @@ Upload **two files** (source + target) → download:
 depending on the selected format.
 
 ### **4. Bilingual Mixed‑File Alignment**
-Upload **files** (.txt, .docx or .pdf)  containing English + Irish mixed together → download:
+Upload **files** (.txt, .pptx, .docx or .pdf)  containing English + Irish mixed together → download:
 
 - `bilingual_alignment.csv` or `.tmx`  
 - `failed_lines.txt`  
@@ -47,13 +47,6 @@ Upload **files** (.txt, .docx or .pdf)  containing English + Irish mixed togethe
 ```
 src/
   App.jsx
-  api.js
-  components/
-    FileUpload.jsx
-    ModeSelector.jsx
-    DownloadLink.jsx
-  styles/
-    ...
 public/
 index.html
 ```
@@ -61,8 +54,8 @@ index.html
 Key logic lives in:
 
 - `App.jsx` — main UI and state management  
+- `api()` — sets which backend to use  
 - `handleProcess()` — sends files + mode to backend  
-- `DownloadLink` — renders the download button using the backend filename  
 
 ---
 
@@ -151,7 +144,7 @@ The app runs at:
 http://localhost:5173
 ```
 
-Make sure the backend is running at the URL defined in `api.js`.
+Make sure the backend is running at the URL defined in `App.jsx`.
 
 ---
 
@@ -166,7 +159,7 @@ npm run deploy
 
 ### **Backend URL**
 
-Located in `src/api.js`:
+Located in `src/App.jsx`:
 
 ```js
 export const api = (path) => `http://localhost:5000${path}`;
