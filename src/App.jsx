@@ -100,9 +100,10 @@ function App() {
   return (
     <div className="container">
       <h1>Irish Text Processing Tools</h1>
-      NOTE: The process must be selected before uploading the file(s).
-      If you change the process, please re-upload the file(s) to avoid errors.
-
+      <span style={{ backgroundColor: 'yellow' }}>
+        NOTE: The process must be selected before uploading the file(s).
+        If you change the process, please re-upload the file(s) to avoid errors.
+      </span>
       <section>
       <h2>1) Select Process</h2>
 
